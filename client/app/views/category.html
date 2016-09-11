@@ -1,1 +1,10 @@
 <p>This is the category view.</p>
+<ul>
+  <li ng-repeat="c in categories">
+    {{c.name}} <button class="btn btn-danger" ng-click="removeCategory(c)">Remove</button>
+  </li>
+</ul>
+
+<input type="text" placeholder="New category" ng-model="newCategoryName"/>
+
+<button class="btn btn-success" ng-click="addNewCategory()">Add</button>

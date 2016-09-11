@@ -10,8 +10,8 @@
  */
 angular
   .module('expenseTrackerApp', [
-    'ngResource',
-    'ngRoute'
+    'ngRoute',
+    'ngResource'
   ])
   .config(function ($routeProvider) {
     $routeProvider

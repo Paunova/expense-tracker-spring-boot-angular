@@ -2,6 +2,7 @@ package mk.ukim.finki.domain;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Category {
@@ -20,7 +23,8 @@ public class Category {
 	@Column
 	private String name;
 	
-	@OneToMany(mappedBy="category", fetch=FetchType.EAGER)	
+	@JsonIgnore
+	@OneToMany(mappedBy="category", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Expense> expenses;
 
 	public Long getCategory_id() {

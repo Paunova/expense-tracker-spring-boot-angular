@@ -1,1 +1,71 @@
 <p>This is the expense view.</p>
+<h3> Dollar to Euro exchange rate {{dollarToEuro}} <button class="btn btn-primary" ng-click="refreshRate()">Update</button></h3>
+
+<h5>Choose currency</h5>
+<label>Euro</label> <input type="radio" ng-model="currency.name" value="euro"/> <br>
+<label>Dollar</label> <input type="radio" ng-model="currency.name" value="dollar"/>
+
+<ul>
+  <li ng-repeat="expense in expenses">
+
+    {{(expense.isDollar && currency.name === 'dollar') || (!expense.isDollar && currency.name==='euro')
+    ? expense.amount
+    : (expense.isDollar && currency.name === 'euro')
+      ? expense.amount * dollarToEuro
+      : expense.amount / dollarToEuro }}
+    <span ng-show="currency.name==='dollar'">$</span>
+    <span ng-show="currency.name==='euro'">€</span> <br>
+    {{expense.category.name}} <br>
+    {{expense.description}} <br>
+    <button class="btn btn-warning" ng-click="editExpense(expense)">Edit</button>
+    <button class="btn btn-danger" ng-click="removeExpense(expense)">Remove</button>
+  </li>
+</ul>
+
+<div ng-show="editMode">
+  <h3>Edit expense</h3>
+  <div>
+    <span>Amount</span>
+    <input type="number" ng-model="editAmount"/>
+    <label>in dollars</label> <input type="checkbox" ng-model="editInDollar"/>
+  </div>
+
+  <div>
+    <span>Category</span>
+    <select ng-model="editCategoriesList"
+            ng-options="category as category.name for category in categories">
+    </select>
+  </div>
+
+  <div>
+    <span>Description</span>
+    <input type="text" ng-model="editDescription"/>
+  </div>
+
+  <button class="btn btn-success" ng-click="saveEdit()">Save</button>
+  <button class="btn btn-warning" ng-click="cancelEdit()">Cancel</button>
+</div>
+
+
+<div ng-show="!editMode">
+  <h3>Add new expense</h3>
+  <div>
+    <span>Amount</span>
+    <input type="number" placeholder="Add amount" ng-model="addAmount"/> <br>
+    <label>in dollars</label> <input type="checkbox" ng-model="addInDollar"/>
+  </div>
+
+  <div>
+    <span>Category</span>
+    <select ng-model="categoriesList"
+            ng-options="category as category.name for category in categories">
+    </select>
+  </div>
+
+  <div>
+    <span>Description</span>
+    <input type="text" placeholder="Description" ng-model="addDescription"/>
+  </div>
+
+  <button class="btn btn-success" ng-click="addNewExpense()">Add</button>
+</div>

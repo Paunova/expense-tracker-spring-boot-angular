@@ -26,6 +26,9 @@ public class Expense {
 	@Column
 	private Date date;
 	
+	@Column
+	private boolean isDollar;
+	
 	@ManyToOne(optional=false)
 	@JoinColumn(name="category_id", referencedColumnName="category_id")
 	private Category category;
@@ -68,5 +71,13 @@ public class Expense {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+	
+	public boolean getIsDollar() {
+		return isDollar;
+	}
+	
+	public void setIsDollar(boolean isDollar) {
+		this.isDollar = isDollar;
 	}
 }

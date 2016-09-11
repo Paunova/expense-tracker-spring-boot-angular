@@ -42,8 +42,23 @@ public class DataInitializer implements CommandLineRunner{
 		pudding.setCategory(food);
 		pudding.setDate(new Date());
 		
+		Expense smoki = new Expense();
+		smoki.setAmount(50);
+		smoki.setDescription("Smoki stobi flips");
+		smoki.setCategory(groceries);
+		smoki.setDate(new Date());
+		
+		Expense sportska = new Expense();
+		sportska.setAmount(300);
+		sportska.setDescription("DOBITNOOOOOO");
+		sportska.setCategory(books);
+		sportska.setIsDollar(true);
+		sportska.setDate(new Date());
+		
 		System.out.println("Command line runner --- inserting expense");
-		expenseRepository.save(pudding);		
+		expenseRepository.save(pudding);	
+		expenseRepository.save(smoki);
+		expenseRepository.save(sportska);
 	}
 
 }
