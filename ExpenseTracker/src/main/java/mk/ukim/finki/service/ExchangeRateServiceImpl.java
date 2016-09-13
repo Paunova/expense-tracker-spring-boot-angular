@@ -14,10 +14,10 @@ import mk.ukim.finki.domain.ExchangeRate;
 
 @Service
 public class ExchangeRateServiceImpl implements ExchangeRateService {
+	// http://fixer.io/
 	
 	public static final String USD = "USD";
 	
-	// http://fixer.io/
 	private static URI EXCHANGE_API_URI;
 	
 	@Autowired
@@ -37,13 +37,11 @@ public class ExchangeRateServiceImpl implements ExchangeRateService {
 	
 	@Override
 	public BigDecimal getDollarToEuroExchangeRate() {
-		// TODO Auto-generated method stub
 		return rate;
 	}
 
 	@Override
 	public void refreshRate() {
-		// TODO Auto-generated method stub
 		ExchangeRate er = restTemplate.getForObject(EXCHANGE_API_URI, ExchangeRate.class);
 		rate = er.getRates().get(USD);
 	}

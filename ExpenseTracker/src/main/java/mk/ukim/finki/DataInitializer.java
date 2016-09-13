@@ -12,7 +12,7 @@ import mk.ukim.finki.repository.CategoryRepository;
 import mk.ukim.finki.repository.ExpenseRepository;
 
 @Component
-public class DataInitializer implements CommandLineRunner{
+public class DataInitializer implements CommandLineRunner {
 
 	@Autowired
 	private CategoryRepository categoryRepository;
@@ -60,5 +60,4 @@ public class DataInitializer implements CommandLineRunner{
 		expenseRepository.save(smoki);
 		expenseRepository.save(sportska);
 	}
-
 }

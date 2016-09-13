@@ -41,5 +41,4 @@ public class CategoryController {
 	public void remove(@RequestParam Long category_id) {
 		categoryRepository.delete(category_id);
 	}
-
 }

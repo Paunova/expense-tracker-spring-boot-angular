@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 import mk.ukim.finki.domain.Category;
 
 @Repository
-public interface CategoryRepository extends JpaRepository<Category, Long>{ }
+public interface CategoryRepository extends JpaRepository<Category, Long>{
+	
+}

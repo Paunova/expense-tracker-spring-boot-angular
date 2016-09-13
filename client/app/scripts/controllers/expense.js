@@ -100,4 +100,3 @@ angular.module('expenseTrackerApp')
       $scope.expenses = Expense.query();
     }
   });
-

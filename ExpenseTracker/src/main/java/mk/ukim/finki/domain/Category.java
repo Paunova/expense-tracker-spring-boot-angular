@@ -50,6 +50,4 @@ public class Category {
 	public void setExpenses(Set<Expense> expenses) {
 		this.expenses = expenses;
 	}
-	
-	
 }
